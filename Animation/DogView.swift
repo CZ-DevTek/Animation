@@ -1,30 +1,26 @@
 //
-//  ContentView.swift
+//  DogView.swift
 //  Animation
 //
-//  Created by Carlos Garcia Perez on 6/5/24.
+//  Created by Carlos Garcia Perez on 8/5/24.
 //
 
 import SwiftUI
-
-struct ContentView: View {
-    @State private var isButtonPressed = false
-    @State private var shakeAngle: Angle = .zero
+struct DogView: View {
+    let isButtonPressed: Bool
     
     var body: some View {
-        
-        VStack {
             
-            GeometryReader { geometry in
-                let width = geometry.size.width
-                let height = geometry.size.height
-                let size = min(width, height)
-                let big = size / 1.5
-                let middle = size / 2
-                let small = size / 5
-                let nearLine = size * 0.1
-                let farLine = size * 0.9
-                
+            VStack {
+                GeometryReader { geometry in
+                    let width = geometry.size.width
+                    let height = geometry.size.height
+                    let size = min(width, height)
+                    let big = size / 1.5
+                    let middle = size / 2
+                    let small = size / 5
+                    let nearLine = size * 0.1
+                    let farLine = size * 0.9
                 // Head
                 Path { path in
                     path.move(to: CGPoint(x: middle, y: nearLine))
@@ -93,7 +89,7 @@ struct ContentView: View {
                 .stroke(Color.black)
                 
                 // left eard
-                let leftEard = Path { path in
+                Path { path in
                     
                     path.addArc(
                         center: CGPoint(x: -80, y: 35),
@@ -133,17 +129,54 @@ struct ContentView: View {
                     )
                     path.closeSubpath()
                 }
-
+                .fill(Color.black)
+                
                 // right eard
-                let rightEard = leftEard
+                let originalPath = Path { path in
+                    path.addArc(
+                        center: CGPoint(x: -80, y: 35),
+                        radius: middle,
+                        startAngle: .degrees(280),
+                        endAngle: .degrees(0),
+                        clockwise: false
+                    )
+                    
+                    path.addArc(
+                        center: CGPoint(x: 138, y: 115),
+                        radius: middle / 2.5,
+                        startAngle: .degrees(270),
+                        endAngle: .degrees(200),
+                        clockwise: true
+                    )
+                    path.addArc(
+                        center: CGPoint(x: 20, y: 95),
+                        radius: small / 2,
+                        startAngle: .degrees(20),
+                        endAngle: .degrees(180),
+                        clockwise: false
+                    )
+                    path.addArc(
+                        center: CGPoint(x: -300, y: 50),
+                        radius: big,
+                        startAngle: .degrees(0),
+                        endAngle: .degrees(340),
+                        clockwise: true
+                    )
+                    path.addArc(
+                        center: CGPoint(x: 30, y: -95),
+                        radius: middle / 2,
+                        startAngle: .degrees(150),
+                        endAngle: .degrees(220),
+                        clockwise: false
+                    )
+                    path.closeSubpath()
+                }
                 
                 let transform = CGAffineTransform(scaleX: -1, y: 1)
                     .concatenating(CGAffineTransform(translationX: 390, y: 0))
                 
-                rightEard
+                originalPath
                     .applying(transform)
-                    .fill(Color.black)
-                leftEard
                     .fill(Color.black)
                 
                 // line nose-mouth
@@ -169,48 +202,9 @@ struct ContentView: View {
             .scaleEffect(0.7)
             .offset(y:100)
         }
-        
-        //Sausage
-        if isButtonPressed {
-            Capsule()
-                .frame(width: 250, height: 55)
-                .scaleEffect(CGSize(width: 0.6, height: 0.7))
-                .foregroundColor(.orange)
-                .scaleEffect(CGSize(width: 0.6, height: 0.7))
-                .rotationEffect(shakeAngle)
-                .animation(.easeInOut(duration: 0.3), value: isButtonPressed)
-        }
-        
-        VStack {
-            Button(action: {
-                withAnimation {
-                    isButtonPressed.toggle()
-                    triggerShake()
-                }
-            }) {
-                Capsule()
-                    .fill(Color.blue)
-                    .frame(width: 200, height: 50)
-                    .overlay(
-                        Text("Feed Me") //
-                            .foregroundColor(.white)
-                    )
-            }
-            
-            Spacer().frame(height: 50)
-            
-        }
-        
-    }
-    private func triggerShake() {
-        withAnimation(Animation.easeInOut(duration: 0.1).repeatCount(10, autoreverses: true)) {
-            shakeAngle = Angle(degrees: 30)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            shakeAngle = .zero
-        }
     }
 }
+
 #Preview {
-    ContentView()
+    DogView(isButtonPressed: false)
 }
