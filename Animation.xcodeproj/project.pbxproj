@@ -12,7 +12,6 @@
 		4F1D7FA32BE965F300563B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D7FA22BE965F300563B25 /* Assets.xcassets */; };
 		4F1D7FA62BE965F300563B25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D7FA52BE965F300563B25 /* Preview Assets.xcassets */; };
 		4F1D7FB12BEBE47900563B25 /* DogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1D7FB02BEBE47900563B25 /* DogView.swift */; };
-		4F1D7FB32BEBF84D00563B25 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1D7FB22BEBF84D00563B25 /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +21,6 @@
 		4F1D7FA22BE965F300563B25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F1D7FA52BE965F300563B25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4F1D7FB02BEBE47900563B25 /* DogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogView.swift; sourceTree = "<group>"; };
-		4F1D7FB22BEBF84D00563B25 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +56,6 @@
 				4F1D7F9E2BE965F200563B25 /* AnimationApp.swift */,
 				4F1D7FA02BE965F200563B25 /* ContentView.swift */,
 				4F1D7FB02BEBE47900563B25 /* DogView.swift */,
-				4F1D7FB22BEBF84D00563B25 /* ButtonView.swift */,
 				4F1D7FA22BE965F300563B25 /* Assets.xcassets */,
 				4F1D7FA42BE965F300563B25 /* Preview Content */,
 			);
@@ -145,7 +142,6 @@
 			files = (
 				4F1D7FA12BE965F200563B25 /* ContentView.swift in Sources */,
 				4F1D7FB12BEBE47900563B25 /* DogView.swift in Sources */,
-				4F1D7FB32BEBF84D00563B25 /* ButtonView.swift in Sources */,
 				4F1D7F9F2BE965F200563B25 /* AnimationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
